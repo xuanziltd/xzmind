@@ -22,17 +22,21 @@ import com.google.gwt.user.client.ui.RootPanel;
 
 import sbaike.client.h5.client.ElUtils;
 import sbaike.client.h5.client.LocalStorage;
-import xuanzi.h5.fs.core.FileInfo;
 import xuanzi.h5.fs.core.IFile;
 import xuanzi.h5.fs.core.Log;
 import xuanzi.h5.fs.core.Result;
 import xuanzi.h5.fs.impl.FileSystem;
  
-
+/**
+ * 应用入口类
+ * 
+ * @author 彭立铭
+ *
+ */
 public class XZMindApplication   implements EntryPoint{
 
-	public XZMindApplication() {
-		// TODO Auto-generated constructor stub
+	public XZMindApplication() { 
+		
 	}
 	
 	FileSystem fs ;
@@ -54,6 +58,9 @@ public class XZMindApplication   implements EntryPoint{
 
 	String folder;
 	
+	/**
+	 * 解析入口参数
+	 */
 	protected void parseParams() {
 		 folder = "/项目库";
 		String filter = "#indexed://";
@@ -75,41 +82,23 @@ public class XZMindApplication   implements EntryPoint{
 		});
 	}
 
+	/**
+	 * 初始化文件管理器
+	 * @param folder
+	 */
 	private void initFileManager(String folder) { 
 		ElUtils bodyEl = ElUtils.bind(RootPanel.getBodyElement()); 
 		XZFileManager manger = new XZFileManager(bodyEl.createDiv().toElement(),fs,folder);
 		
 	}
 
+	/**
+	 * 初始化文档编辑器
+	 * @param folder
+	 * @param file
+	 */
 	private void initEditor(String folder,IFile file) {
-		// TODO Auto-generated method stub
-		/*
-		Node root = new Node("DDDDD");
-		Scene scene = new WestScene();
-		root.setScene(scene);
-		root.setShape(new Round());
-		root.setLine(new Line());
-		for(int i=0;i<5;i++) {
-			Node node = root.addNode("DDDD "+i);
-			for(int x=0;x<3;x++) {
-				node.addNode("Node "+x);
-			}
-		}
-		Sheet sheet = new Sheet();
-		sheet.setRoot(root);
-		
-		SVGCanvas canvas = new SVGCanvas();
-		sheet.setTheme(new Theme()); 
-		RenderBuffer.canvas = canvas;
-	//	root.requestLayout();
-		sheet.layoutChange(true);
-		
-		canvas.resize(scene.box().width(), scene.box().height());
-		sheet.drawPicture(canvas);
-		//RootPanel.getBodyElement().setInnerHTML(canvas.toString());
-		//Window.alert((path));
-		 * 	 
-		 */
+		 
 		ElUtils parent = ElUtils.bind(RootPanel.getBodyElement()).createDiv();
 		Document.get().getElementById("gitee_icon").removeFromParent();
 		

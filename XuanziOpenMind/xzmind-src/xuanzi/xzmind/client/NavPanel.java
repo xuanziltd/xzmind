@@ -29,6 +29,12 @@ import xuanzi.h5.fs.core.Result;
 import xuanzi.h5.fs.impl.BFileBytes;
 import xuanzi.h5.fs.impl.FileSystem;
 
+/**
+ * 侧边栏
+ * 
+ * @author 彭立铭
+ *
+ */
 public class NavPanel extends Module {
 
 	public NavPanel() {
@@ -45,6 +51,11 @@ public class NavPanel extends Module {
 	
 	ElUtils listEl;
 	
+	/**
+	 * 插入样例文件
+	 * @param name
+	 * @param result
+	 */
 	private void insertFile(final String name,final String result) {
 		final IFileSystem fs = manager.getFs(); 
 		manager.getFs().createFile(fs.getCurrentFolder(), name , new Result() {

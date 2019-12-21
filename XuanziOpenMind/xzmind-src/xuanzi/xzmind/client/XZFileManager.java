@@ -14,7 +14,6 @@
 
 package xuanzi.xzmind.client;
 
-import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import com.google.gwt.dom.client.Element;
@@ -26,23 +25,31 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.RootPanel;
 
 import sbaike.client.h5.client.Action;
-import sbaike.client.h5.client.Base64;
 import sbaike.client.h5.client.ElUtils;
 import sbaike.client.h5.client.LocalStorage;
 import xuanzi.h5.fs.client.IndexedFSView;
 import xuanzi.h5.fs.client.PopupMenu;
-import xuanzi.h5.fs.core.FileList;
 import xuanzi.h5.fs.core.IFile;
 import xuanzi.h5.fs.core.Result;
 import xuanzi.h5.fs.impl.BFile;
 import xuanzi.h5.fs.impl.FileSystem;
+import xuanzi.xzmind.core.IXZFileManager;
 
-public class XZFileManager extends IndexedFSView {
+/**
+ * 扩展 IndexedFSView 组件，增加思维导图管理功能
+ * 
+ * @author 彭立铭
+ *
+ */
+public class XZFileManager extends IndexedFSView implements IXZFileManager{
 
 	
 	
 	private Action filePopupAction;
 
+	/**
+	 * 渲染文件列表
+	 */
 	@Override
 	protected void onRenderList(List<BFile> items, ElUtils listEl2) {
 	 

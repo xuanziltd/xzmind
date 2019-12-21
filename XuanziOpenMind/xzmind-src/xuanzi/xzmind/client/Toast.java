@@ -19,6 +19,13 @@ import com.google.gwt.user.client.ui.RootPanel;
 
 import sbaike.client.h5.client.ElUtils;
 
+
+/**
+ * 提示框组件
+ * 
+ * @author 彭立铭
+ *
+ */
 public class Toast {
 
 	public Toast() {

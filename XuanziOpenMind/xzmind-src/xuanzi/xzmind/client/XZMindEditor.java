@@ -54,14 +54,29 @@ import xuanzi.openmind.scenes.base.WestScene;
 import xuanzi.openmind.shapes.Round;
 import xuanzi.openmind.themes.Theme;
  
-
+/**
+ * 文档编辑器
+ * 
+ * @author 彭立铭
+ *
+ */
 public class XZMindEditor extends Module{
 	
 	String id = "xx";
 	
 	FileSystem fs ;
-	 
 	
+	ElUtils parent ;
+	
+	String path;
+
+	private IFile currentFile;
+	 
+	/**
+	 * 文件模块就绪，渲染文档
+	 * 
+	 * @param bytes	文档正文
+	 */
 	private void onReadyFile(String bytes) {
 		ElUtils renderEl = parent.createDiv().attr("id",id);
 		render(parent.toElement(), id, Window.getClientHeight()-2, false,bytes);
@@ -89,17 +104,12 @@ public class XZMindEditor extends Module{
 		}
 	};
 	
-	ElUtils parent ;
-	
-	String path;
 
-	private IFile currentFile;
 
 	private Action createMindAction = new Action() {
 		
 		@Override
-		public void execute(Element el, Event event) {
-			// TODO Auto-generated method stub
+		public void execute(Element el, Event event) { 
 			PopupMenu pm = new SamplePopupMenu(XZMindEditor.this,event); 
 			pm.show();
 		}
@@ -132,7 +142,9 @@ public class XZMindEditor extends Module{
  
 	}
  
-
+	/**
+	 * 开始自动保存任务
+	 */
 	protected void startSaveTask() {
 		Timer timer = new Timer() {
 			
@@ -157,6 +169,11 @@ public class XZMindEditor extends Module{
 
 	CanvasElement ce ;
 
+	/**
+	 * 解析思维导图的接口方法
+	 * @param text	MD原文
+	 * @return 成功渲染的思维导图SVG
+	 */
 	public String supermind(String text) {
 		Node root = parseText(text); 
 		root.setShape(new Round());
@@ -184,7 +201,11 @@ public class XZMindEditor extends Module{
 	}
 	
  
-	
+	/**
+	 * 解析MD原文格式
+	 * @param text2
+	 * @return
+	 */
 	public static Node parseText(String text2) {
 		 
 		pos = 1;
@@ -195,8 +216,7 @@ public class XZMindEditor extends Module{
 		String list[]=text2.split("\n");
 		String first = list[0];
 		if(first.startsWith(":")) {
-			String key = first.substring(1);
-		//	Log.log(":"+key);
+			String key = first.substring(1); 
 			Scene scene = new EastScene();
 			if("逻辑图-向左".equals(key))
 				scene = new WestScene();
@@ -239,7 +259,12 @@ public class XZMindEditor extends Module{
 
 	
 	static int pos = 0;
-	
+	/**
+	 * 
+	 * @param node
+	 * @param list
+	 * @param plevel
+	 */
 	private static void listX(Node node,String[] list,int plevel ) {
 		Node lastNode = node;
 		
@@ -255,28 +280,24 @@ public class XZMindEditor extends Module{
 					open = false;
 					topic = topic.substring(3);
 				}
-				Node child = new  Node(topic); 
-				
+				Node child = new  Node(topic);  
 				if(topic.contains(":")) {
 					int p = topic.indexOf(":");
 					child.setLabel(topic.substring(0,p));
 					child.setTopic(topic.substring(p+1));
 				}
 				if(l>plevel) {  
-					lastNode.addNode(child);
-					//Log.log(">>> "+ l+" "+topic);  
+					lastNode.addNode(child); 
 					node = (Node) lastNode;
 				}else if(l<plevel){
 					int x = (plevel-l)/4;
 					for(int i=0;i<x;i++) {
 					 if(node.getParent()!=null)
 					 	node = (Node) node.getParent();
-					}
-					//Log.log(l+"<<< "+x+" "+topic); 
+					} 
 					node.addNode(child);
 				}else{  
-					node.addNode(child);
-					//Log.log(l+"= "+topic);
+					node.addNode(child); 
 				}
 				child.setOpen(open);
 				lastNode = child;
@@ -287,9 +308,7 @@ public class XZMindEditor extends Module{
 		}
 	}
 
-	private native void render(Element el, String id, int xheight, boolean md,String text) /*-{
-	 //	console.log('render markdown ' + id+" "+text);
-		
+	private native void render(Element el, String id, int xheight, boolean md,String text) /*-{ 
 		var $this = this;
 		var phone = false;
 		var config = {
@@ -314,8 +333,6 @@ public class XZMindEditor extends Module{
 			path : "editor.md/lib/"
 		};
 	 
-
- 
 		try {
 			if (md) {
 				$wnd.editormd.markdownToHTML(id, config);

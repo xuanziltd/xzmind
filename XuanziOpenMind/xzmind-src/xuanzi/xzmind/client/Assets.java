@@ -19,6 +19,12 @@ import com.google.gwt.http.client.RequestCallback;
 import com.google.gwt.http.client.RequestException;
 import com.google.gwt.http.client.Response;
 
+/**
+ * 在线资源文件拉取工具类
+ * 
+ * @author 彭立铭
+ *
+ */
 public class Assets {
 
 	public Assets() {
