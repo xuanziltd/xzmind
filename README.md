@@ -31,14 +31,15 @@
 ### 主要使用到的开源项目
 - [XZMindMap](https://gitee.com/xuanzi_code/XZMindMap "XZMindMap")
 - [IndexedFSView](https://gitee.com/xuanzi_code/IndexedFSView "IndexedFSView")
-  [IndexeddbFS](https://gitee.com/xuanzi_code/IndexeddbFS "IndexeddbFS")
-  [Indexeddb_gwt](https://gitee.com/xuanzi_code/Indexeddb_gwt "Indexeddb_gwt")
+- [IndexeddbFS](https://gitee.com/xuanzi_code/IndexeddbFS "IndexeddbFS")
+- [Indexeddb_gwt](https://gitee.com/xuanzi_code/Indexeddb_gwt "Indexeddb_gwt")
 - [Editor.md](https://pandao.github.io/editor.md/ "Editor.md")
 
 
 ### 嵌入思维导图1
+
 ``` 
-```mind
+ ```mind
 :逻辑图
 样例 : 在MD文档中插入思维导图
 	第一项 : 样例节点
@@ -46,17 +47,20 @@
 		子节点
 	第二项 : 样例节点
 	第三项 : 样例节点
+ ```
 ```
-```
+
 > 说明：用TAB键划分节点层次
 
 ** 渲染的显示效果 **
+
 ![sample-1](https://xzmind.xuanzi.ltd/assets/samples/sample-1.svg)
 
 ### 嵌入思维导图2
 说明：用TAB键划分节点层次
+
 ```
-```mind
+ ```mind
 :树杈图
 百科词条:中华人民共和国
 	首都:北京
@@ -76,13 +80,16 @@
 		诸子百家
 		汉服文化
 		唐诗宋词
+ ```
 ```
-```
+
 ** 渲染的显示效果 **
+
 ![sample-2](https://xzmind.xuanzi.ltd/assets/samples/sample-2.svg)
 
 ### 常用技巧
 - 支持MD语法输入，例如以下示例创建一幅简单的思维导图：
+
  ```
     ```mind
     :逻辑图
@@ -94,6 +101,7 @@
     	第三项 : 样例节点
     ````
 ````
+
 - 思维导图每一个节点已换行分隔，节点级别已TAB键符为层次划分，下级比上级多一个TAB键符。
 
 ### 项目未来路线图
