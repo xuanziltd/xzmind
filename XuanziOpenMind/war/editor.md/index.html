@@ -1,0 +1,86 @@
+<html lang="zh">
+    <head>
+        <meta charset="utf-8" /> 
+		<link rel="stylesheet" href="css/editormd.css" /> 
+		 
+	</head>
+	<body style="padding:0px;margin:0px;background:#FFFFFF;border:0px;display: none;overflow: hidden;">
+	 
+		<div id="test-editormd" >
+           <textarea id="textField" style="display:none;"></textarea>
+        </div>
+        
+        <script src="lib/jquery.min.js"></script>
+        <script src="editormd.js"></script>
+        
+        <script type="text/javascript"> 
+        try{
+        	if(window.androidFrameEditor)
+            	window.frameEditor = window.androidFrameEditor;
+            if(!window.frameEditor){
+            	window.frameEditor = parent.frameEditor;
+            }
+            
+            window.submitData = submitData;
+            parent.submitData = submitData;
+          }catch(ex){
+        	  console.dir(ex);
+          }
+        function submitData(){
+        	window.frameEditor.put("text",window.testEditor.getMarkdown());
+        	window.frameEditor.finish();
+        }
+        
+      
+        	function setValue(title,text){ 
+        	 
+        		textField.value = text;
+        		//alert(textField.value);
+        		var phone = false;
+            	if(window.document.body.clientWidth<480){
+            		phone = true;
+            	}
+            	window.testEditor = editormd("test-editormd", {
+                    width   : "99.5%",
+                    height  : "99.9%",
+                    emoji           : true,
+                    taskList        : true,
+                    tocContainer    : "#custom-toc-container",
+                    tex             : false,  
+                    flowChart       : true,  
+                    sequenceDiagram : true, 
+                    toolbarIcons:phone?"phone":"full",
+                    syncScrolling :true ,
+                    path    : "lib/"
+                }); 
+            	$('body').fadeIn(300);
+            	if(phone){ 
+            	 
+            		//setTimeout(function()
+            			/*	{
+            			$(".fa-file-code-o").parent().remove();
+                		$(".fa-smile-o").parent().remove();
+                		$(".fa-copyright").parent().remove();
+                		$(".fa-terminal").parent().remove();
+                		$(".fa-eye").parent().remove();
+                		$(".fa-arrows-alt").parent().remove();
+                		$(".fa-question-circle").parent().remove();
+                		$(".fa-info-circle").parent().remove();
+            		} */
+            		//,300); 
+            		 
+            		window.testEditor.unwatch();
+            	}
+			} 
+        	
+        	function cancal(){
+        		window.frameEditor.finish()
+        	} 
+            $(function() { 
+            		setValue("编辑笔记",window.frameEditor.get('text'));
+             
+            });
+        </script>
+         <script src="../js/iframe.js"></script>
+	</body>
+</html>

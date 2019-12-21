@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="xzmind-src"/>
+	<classpathentry kind="con" path="com.gwtplugins.gwt.eclipse.core.GWT_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
+	<classpathentry kind="lib" path="libs/gwt-h5.jar"/>
+	<classpathentry kind="lib" path="libs/gwt-indexeddb.jar"/>
+	<classpathentry kind="lib" path="libs/nodejs.plugin.libs.jar"/>
+	<classpathentry kind="lib" path="libs/gwt-indexeddbfs.jar"/>
+	<classpathentry kind="lib" path="libs/gwt-indexedfsview.jar"/>
+	<classpathentry kind="lib" path="libs/gwt-xzmindmap.jar"/>
+	<classpathentry kind="output" path="war/WEB-INF/classes"/>
+</classpath>

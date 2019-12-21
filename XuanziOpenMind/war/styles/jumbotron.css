@@ -1,0 +1,30 @@
+body {
+  padding-top: 3.5rem;
+}
+
+p{
+	color: #666;
+   
+}
+
+footer a{color:#555}
+
+.row{
+    padding-bottom: 36px;
+	
+}
+
+.col-md-4{padding-bottom:26px}
+.fs-r-img{
+	width:280px;float:left;margin-right:36px;margin-left:36px;
+}
+
+.navbar-nav .fa{font-weight: normal;}
+.navbar-nav .fa:before {
+	margin-right:3px;
+}
+.nav-item{margin-left:28px}
+
+@media (max-width:576px){
+	.fs-r-img{width:100%;float: none;margin-right:0px}
+}
