@@ -110,7 +110,9 @@ public class XZFileManager extends IndexedFSView implements IXZFileManager{
 	protected String safeFileName(String name) {
 		return name.toLowerCase().endsWith(".md")?super.safeFileName(name):(super.safeFileName(name)+".md");
 	}
-	
+	/**
+	 * 初始化顶部工具栏
+	 */
 	@Override
 	protected void onInitToolbar(ElUtils toolbar) {
 		 Action applyLightAction = new Action() { 
