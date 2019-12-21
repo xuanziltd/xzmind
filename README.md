@@ -1,4 +1,4 @@
-#玄子思维导图 
+# 玄子思维导图 
 
 [![玄子思维导图](https://xuanzi.ltd/styles/xzmind.png "玄子思维导图")](http://xzmind.xuanzi.ltd "玄子思维导图")
 
@@ -22,20 +22,22 @@
 
 
 ### 联系方式
-[开源项目首页](https://gitee.com/xuanzi_code/xzmind "开源项目首页")
-[应用访问地址](http://xzmind.xuanzi.ltd "应用访问地址")
-[开发者主页](https://xuanzi.ltd "开发者主页")
-开发者交流Q群: 345694159
-电子邮箱 : app@sbaike.com
+- [开源项目首页](https://gitee.com/xuanzi_code/xzmind "开源项目首页")
+- [应用访问地址](http://xzmind.xuanzi.ltd "应用访问地址")
+- [开发者主页](https://xuanzi.ltd "开发者主页")
+- 开发者交流Q群: 345694159
+- 电子邮箱 : app@sbaike.com
 
 ### 主要使用到的开源项目
 - [XZMindMap](https://gitee.com/xuanzi_code/XZMindMap "XZMindMap")
 - [IndexedFSView](https://gitee.com/xuanzi_code/IndexedFSView "IndexedFSView")
+  [IndexeddbFS](https://gitee.com/xuanzi_code/IndexeddbFS "IndexeddbFS")
+  [Indexeddb_gwt](https://gitee.com/xuanzi_code/Indexeddb_gwt "Indexeddb_gwt")
 - [Editor.md](https://pandao.github.io/editor.md/ "Editor.md")
 
 
 ### 嵌入思维导图1
- 
+``` 
 ```mind
 :逻辑图
 样例 : 在MD文档中插入思维导图
@@ -45,6 +47,7 @@
 	第二项 : 样例节点
 	第三项 : 样例节点
 ```
+```
 > 说明：用TAB键划分节点层次
 
 ** 渲染的显示效果 **
@@ -52,6 +55,7 @@
 
 ### 嵌入思维导图2
 说明：用TAB键划分节点层次
+```
 ```mind
 :树杈图
 百科词条:中华人民共和国
@@ -73,7 +77,7 @@
 		汉服文化
 		唐诗宋词
 ```
-
+```
 ** 渲染的显示效果 **
 ![sample-2](https://xzmind.xuanzi.ltd/assets/samples/sample-2.svg)
 
@@ -92,9 +96,18 @@
 ````
 - 思维导图每一个节点已换行分隔，节点级别已TAB键符为层次划分，下级比上级多一个TAB键符。
 
+### 项目未来路线图
+- 支持更多思维导图结构布局
+- 支持设置节点颜色
+- 支持导入和导出文档
+- 支持多设备客户端，如PC、安卓、iphone、微信小程序等
+- 支持文件同步
+
 ### 项目编译方法
 - 这是基于GWT插件的项目，请先在eclipse中安装GWT开发插件。
 - 下载本项目的源代码，并导入eclipse项目即可。
-- 思维导图渲染和文件管理模块源码请在以下项目中下载，编译方法同上：
+- 编译思维导图渲染和文件管理模块等源码请在以下项目中下载，编译方法同上：
 - [XZMindMap](https://gitee.com/xuanzi_code/XZMindMap "XZMindMap")
 - [IndexedFSView](https://gitee.com/xuanzi_code/IndexedFSView "IndexedFSView")
+- [IndexeddbFS](https://gitee.com/xuanzi_code/IndexeddbFS "IndexeddbFS")
+- [Indexeddb_gwt](https://gitee.com/xuanzi_code/Indexeddb_gwt "Indexeddb_gwt")
