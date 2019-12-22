@@ -28,6 +28,7 @@ import com.google.gwt.user.client.ui.RootPanel;
 
 import sbaike.client.h5.client.Action;
 import sbaike.client.h5.client.ElUtils;
+import sbaike.client.h5.client.JQuery;
 import xuanzi.commons.graphics.Paint;
 import xuanzi.commons.graphics.SVGCanvas;
 import xuanzi.h5.fs.client.PopupMenu;
@@ -71,7 +72,21 @@ public class XZMindEditor extends Module{
 	String path;
 
 	private IFile currentFile;
+	
+	public IFile getCurrentFile() {
+		return currentFile;
+	}
+	
+	public FileSystem getFs() {
+		return fs;
+	}
+	
+	public String getPath() {
+		return path;
+	}
 	 
+	PrintService printService = new PrintService(this);
+	
 	/**
 	 * 文件模块就绪，渲染文档
 	 * 
@@ -114,6 +129,8 @@ public class XZMindEditor extends Module{
 			pm.show();
 		}
 	};
+
+	ExportDocumentService exportService = new ExportDocumentService(this);
 	
 
 	public XZMindEditor(Element element,FileSystem fs2, IFile file,String filePath) {
@@ -127,6 +144,8 @@ public class XZMindEditor extends Module{
 		toolbar.createSpan(path.replace("/", " / ")).addClass("fa fa-folder fs-apps");
 		toolbar.createButton("思维导图").addClass("fa fa-plus").click(createMindAction );
 		toolbar.createButton(" 保  存").click(saveAction).addClass("fs-fr fa fa-save");
+		toolbar.createButton("").attr("title", "下载文件").click(exportService.downloadAction ).addClass("fs-fr fa fa-download");
+		toolbar.createButton("").attr("title", "打印文档").click(printService.printAction ).addClass("fs-fr fa fa-print");
 		Window.setTitle(file.getName()+"-玄子思维导图");
 		ce = DOM.createElement("canvas").cast();
 		fs.readFile(file, new FileReader() {
@@ -365,5 +384,17 @@ public class XZMindEditor extends Module{
 	public native void insertMdText(String text) /*-{
 		this.editor.insertValue(text);
 	}-*/;
+
+	/**
+	 * 得到渲染后的文本
+	 * @return
+	 */
+	public String getRenderedText() {
+		StringBuffer sb = new StringBuffer("<html><head><link rel=\"stylesheet\" href=\"https://xzmind.xuanzi.ltd/editor.md/css/editormd.preview.min.css\"><link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.3.0/katex.min.css\"></head>\n<body>");
+		sb.append("<div class=\"editormd-preview-container\"><div class=\"markdown-body\">\n");
+		sb.append(JQuery.$(".editormd-preview-container").html());
+		sb.append("\n</div></body>\n</html>");
+		return sb.toString();
+	}
 
 }

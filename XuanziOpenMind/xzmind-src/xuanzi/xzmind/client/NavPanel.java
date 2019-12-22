@@ -15,7 +15,6 @@
 package xuanzi.xzmind.client;
 
 import com.google.gwt.dom.client.Element;
-import com.google.gwt.http.client.RequestException;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
@@ -27,7 +26,6 @@ import xuanzi.h5.fs.core.IFile;
 import xuanzi.h5.fs.core.IFileSystem;
 import xuanzi.h5.fs.core.Result;
 import xuanzi.h5.fs.impl.BFileBytes;
-import xuanzi.h5.fs.impl.FileSystem;
 
 /**
  * 侧边栏

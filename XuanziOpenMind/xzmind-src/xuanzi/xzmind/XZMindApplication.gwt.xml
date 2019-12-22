@@ -17,5 +17,6 @@
   <source path='modules'/> 
   <source path='utils'/> 
   <source path='client'/>  
+  <source path='core'/> 
   <add-linker name="xsiframe"/>                 
 </module>

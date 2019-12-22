@@ -55,6 +55,9 @@ body{margin:0px;padding:0px}
     color: #CCC;
 }  	
 
+.fs-print-frame{position: fixed;left:-200px;width:100px;height:100px;}
+.fs-popup-frame{position: fixed;top:200px;left:200px;width:600px;height:400px;z-index: 999999999}
+
 .fs-toast{position: fixed;bottom:10%;text-align: center;z-index:999999999;left:30%;right:30%}
 .fs-toast label{display:inline-block; padding:5px;padding-left:28px;padding-right:28px;color:#eee;background: #444;border-radius:3px }
 
