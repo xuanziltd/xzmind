@@ -42,7 +42,7 @@ public class XZMindApplication   implements EntryPoint{
 	}
 	
 	public XZMindApplication() { 
-		
+		  
 	}
 	
 	FileSystem fs ;
@@ -54,7 +54,7 @@ public class XZMindApplication   implements EntryPoint{
 			
 			@Override
 			protected void onReady() {
-				Log.log("onReady");
+				//Log.log("onReady");
 				parseParams();
 			}
 		};  
