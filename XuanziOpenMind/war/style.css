@@ -21,7 +21,7 @@ body{overflow:hidden}
 .fs-body-view{margin-left: 200px}
 .nav-panel{position:absolute;left:0px;top:50px;bottom:0px; width:200px;background: #f4f4f4;float:left;border-right:3px solid #eee}
 
-.fs-filesview{padding:16px;    padding-top: 48px;min-height:200px;;max-height:400px;overflow: auto;border-top:2px solid rgba(100,100,100,0.06)} 
+.fs-filesview{padding:16px;    padding-top: 48px;min-height:200px;100%;overflow: auto;border-top:2px solid rgba(100,100,100,0.06)} 
 .fs-filesview .fa-folder{font-size:64px;color:#e88f17}
 .fs-filesview .fa-plus{font-size:64px;color:#aaa}
 .fs-filesview .fs-file-icon{font-size:64px;color:#4f4f4f}
@@ -55,6 +55,8 @@ body{margin:0px;padding:0px}
     color: #CCC;
 }  	
 
+.fs-qrcode{    padding: 5px;
+    background: #fff;}
 .fs-print-frame{position: fixed;left:-200px;width:100px;height:100px;}
 .fs-popup-frame{position: fixed;top:200px;left:200px;width:600px;height:400px;z-index: 999999999}
 
@@ -67,8 +69,11 @@ body{margin:0px;padding:0px}
     font-weight: bold;
     min-width:160px
 }
-.fs-filemanger .fs-toolbar{padding-right:120px}
 
+.qrcode canvas{    padding: 5px;background: #fff;max-height:150px}
+
+.fs-filemanger .fs-toolbar{padding-right:120px}
+ 
 .fs-theme-night .fs-nav-list hr{border-bottom: 5px solid #222;}
 .fs-theme-night .nav-panel{background:#333;color:#999;border-right: 3px solid #282828;}
 .fs-theme-night .fs-nav-list li button{color:#aaa}

@@ -20,15 +20,22 @@ import java.util.Map;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.dom.client.CanvasElement;
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.event.logical.shared.CloseEvent;
+import com.google.gwt.event.logical.shared.CloseHandler;
+import com.google.gwt.event.logical.shared.ResizeEvent;
+import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.Window.ClosingEvent;
+import com.google.gwt.user.client.Window.ClosingHandler;
 import com.google.gwt.user.client.ui.RootPanel;
 
 import sbaike.client.h5.client.Action;
 import sbaike.client.h5.client.ElUtils;
 import sbaike.client.h5.client.JQuery;
+import sbaike.client.h5.client.LocalStorage;
 import xuanzi.commons.graphics.Paint;
 import xuanzi.commons.graphics.SVGCanvas;
 import xuanzi.h5.fs.client.PopupMenu;
@@ -54,6 +61,7 @@ import xuanzi.openmind.scenes.base.ThinkTreeNorthScene;
 import xuanzi.openmind.scenes.base.WestScene;
 import xuanzi.openmind.shapes.Round;
 import xuanzi.openmind.themes.Theme;
+import xuanzi.xzmind.core.IXZMindeEditor;
  
 /**
  * 文档编辑器
@@ -61,7 +69,7 @@ import xuanzi.openmind.themes.Theme;
  * @author 彭立铭
  *
  */
-public class XZMindEditor extends Module{
+public class XZMindEditor extends Module implements IXZMindeEditor{
 	
 	String id = "xx";
 	
@@ -73,14 +81,17 @@ public class XZMindEditor extends Module{
 
 	private IFile currentFile;
 	
+	@Override
 	public IFile getCurrentFile() {
 		return currentFile;
 	}
 	
+	@Override
 	public FileSystem getFs() {
 		return fs;
 	}
 	
+	@Override
 	public String getPath() {
 		return path;
 	}
@@ -94,58 +105,49 @@ public class XZMindEditor extends Module{
 	 */
 	private void onReadyFile(String bytes) {
 		ElUtils renderEl = parent.createDiv().attr("id",id);
-		render(parent.toElement(), id, Window.getClientHeight()-2, false,bytes);
+		String theme = LocalStorage.get("fs-theme");
+		boolean drak = "fs-theme-night".equals(theme);
+		render(parent.toElement(), id, Window.getClientHeight()-2,drak, false,bytes);
 	}
 	
 	private Action saveAction = new Action() {
 		
 		@Override
 		public void execute(Element el, Event event) {
-			
-		 
-					fs.writeFile(currentFile, new FileWriter() {
-						@Override
-						public void finish(BFileBytes fbb) {
-							
-						}
-						
-						@Override
-						public String toString() { 
-							return getMdText();
-						}
-					});
-					Toast.text("已保存").show();
-			 
+				onSave();
 		}
 	};
 	
 
 
-	private Action createMindAction = new Action() {
-		
-		@Override
-		public void execute(Element el, Event event) { 
-			PopupMenu pm = new SamplePopupMenu(XZMindEditor.this,event); 
-			pm.show();
-		}
-	};
+	
+	
+	KeyBindingService keyBinding = new KeyBindingService(this);
 
 	ExportDocumentService exportService = new ExportDocumentService(this);
 	
+	MindCreaterService createrService = new MindCreaterService(this);
+	
+	ElUtils toolbarEl;
+	
+	public ElUtils getToolbarEl() {
+		return toolbarEl;
+	}
 
 	public XZMindEditor(Element element,FileSystem fs2, IFile file,String filePath) {
 		this.fs = fs2; 
 		this.path = filePath;
 		currentFile = file;
 		parent = ElUtils.bind(element); 
-		ElUtils toolbar = parent.createDiv().addClass("fs-toolbar");
-		toolbar.createEl("img").attr("src", "logo.png").addClass("fs-logo");
-		toolbar.createSpan("玄子思维导图").addClass("fa  fs-apps");
-		toolbar.createSpan(path.replace("/", " / ")).addClass("fa fa-folder fs-apps");
-		toolbar.createButton("思维导图").addClass("fa fa-plus").click(createMindAction );
-		toolbar.createButton(" 保  存").click(saveAction).addClass("fs-fr fa fa-save");
-		toolbar.createButton("").attr("title", "下载文件").click(exportService.downloadAction ).addClass("fs-fr fa fa-download");
-		toolbar.createButton("").attr("title", "打印文档").click(printService.printAction ).addClass("fs-fr fa fa-print");
+		toolbarEl = parent.createDiv().addClass("fs-toolbar");
+		toolbarEl.createEl("img").attr("src", "logo.png").addClass("fs-logo");
+		toolbarEl.createSpan("玄子思维导图").addClass("fa  fs-apps");
+		toolbarEl.createSpan(path.replace("/", " / ")).addClass("fa fa-folder fs-apps");
+	
+		createrService.onReady();
+		toolbarEl.createButton(" 保  存").attr("title", "Ctrl + S 保存文件").click(saveAction).addClass("fs-fr fa fa-save");
+		toolbarEl.createButton("").attr("title", "下载文件").click(exportService.downloadAction ).addClass("fs-fr fa fa-download");
+		toolbarEl.createButton("").attr("title", "打印文档").click(printService.printAction ).addClass("fs-fr fa fa-print");
 		Window.setTitle(file.getName()+"-玄子思维导图");
 		ce = DOM.createElement("canvas").cast();
 		fs.readFile(file, new FileReader() {
@@ -156,8 +158,30 @@ public class XZMindEditor extends Module{
 				startSaveTask();
 			} 
 		});
+		//调整编辑器大小
+		Window.addResizeHandler(new ResizeHandler() {
+			
+			@Override
+			public void onResize(ResizeEvent event) {
+				height(event.getHeight()-65);
+			}
+		});
+		Window.addWindowClosingHandler(new ClosingHandler() {
+			
+			@Override
+			public void onWindowClosing(ClosingEvent event) {
+				onSave(); 
+			}
+		});
 		
-		
+		Window.addCloseHandler(new CloseHandler<Window>() {
+			
+			@Override
+			public void onClose(CloseEvent<Window> event) { 
+				onSave();
+				
+			}
+		});
  
 	}
  
@@ -326,16 +350,37 @@ public class XZMindEditor extends Module{
 			
 		}
 	}
+	
+	void onSave(){
+		fs.writeFile(currentFile, new FileWriter() {
+			@Override
+			public void finish(BFileBytes fbb) {
+				
+			}
+			
+			@Override
+			public String toString() { 
+				return getMdText();
+			}
+		});
+		Toast.text("保存完成").show();
+	}
 
-	private native void render(Element el, String id, int xheight, boolean md,String text) /*-{ 
+	private native void render(Element el, String id, int xheight,boolean dark, boolean md,String text) /*-{ 
 		var $this = this;
 		var phone = false;
 		var config = {
 			supermind : {
+				save:function(){
+					 $this.@xuanzi.xzmind.client.XZMindEditor::onSave()();
+				},
 				render : function(text) { 
 					return $this.@xuanzi.xzmind.client.XZMindEditor::supermind(Ljava/lang/String;)(text);
 				}
 			},
+			editorTheme:dark?"blackboard":"default",
+			previewTheme:dark?"dark":"default",
+			theme:dark?"dark":"default",
 			width : "99.8%",
 			height : xheight - 60,
 			emoji : true,
@@ -364,31 +409,42 @@ public class XZMindEditor extends Module{
 		this.editorConfig = config;
 	}-*/;
 
+	@Override
 	public native void setMdText(String text) /*-{
 		this.editor.setMarkdown(text);
 	}-*/;
 	
+	@Override
 	public native void setRenderText(String text) /*-{
 		this.editorConfig.markdown = text;
 		$wnd.editormd.markdownToHTML(this.editorId, this.editorConfig);
 	}-*/;
 
+	@Override
 	public native String getMdText()/*-{
 		return this.editor.getMarkdown();
 	}-*/;
 
+	@Override
 	public void insertText(String text) { 
 			insertMdText(text);
 	}
 
+	@Override
 	public native void insertMdText(String text) /*-{
 		this.editor.insertValue(text);
+	}-*/;
+
+	@Override
+	public native void height(int height) /*-{
+		this.editor.height(height);
 	}-*/;
 
 	/**
 	 * 得到渲染后的文本
 	 * @return
 	 */
+	@Override
 	public String getRenderedText() {
 		StringBuffer sb = new StringBuffer("<html><head><link rel=\"stylesheet\" href=\"https://xzmind.xuanzi.ltd/editor.md/css/editormd.preview.min.css\"><link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.3.0/katex.min.css\"></head>\n<body>");
 		sb.append("<div class=\"editormd-preview-container\"><div class=\"markdown-body\">\n");

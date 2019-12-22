@@ -20,13 +20,14 @@ import com.google.gwt.user.client.ui.RootPanel;
 
 import sbaike.client.h5.client.Action;
 import sbaike.client.h5.client.ElUtils;
+import xuanzi.h5.fs.client.PopupMenu;
 import xuanzi.h5.fs.core.Log;
 
-public class PrintService {
+public class MindCreaterService {
 
 	XZMindEditor editor;
 	
-	public PrintService(XZMindEditor editor) {
+	public MindCreaterService(XZMindEditor editor) {
 		this.editor = editor;
 	}
 	
@@ -46,4 +47,29 @@ public class PrintService {
 			timer.schedule(8000);
 		}
 	};
+	
+	private Action createMindAction = new Action() {
+		
+		@Override
+		public void execute(Element el, Event event) { 
+			PopupMenu pm = new SamplePopupMenu(editor,event); 
+			pm.show();
+		}
+	};
+
+	private Action insertQRCrodeAction = new Action() {
+		
+		@Override
+		public void execute(Element el, Event event) {
+			editor.insertMdText("###插入二维码\r\n"
+					+ "```qrcode\r\n"  
+					+"二维码码内容,链接 https://xuanzi.ltd\r\n"
+					+"```\r\n" );
+		}
+	};
+
+	public void onReady() { 
+		editor.getToolbarEl().createButton("思维导图").addClass("fa fa-plus").click(createMindAction );
+		editor.getToolbarEl().createButton("").addClass("fa fa-qrcode").click(insertQRCrodeAction  );
+	}
 }

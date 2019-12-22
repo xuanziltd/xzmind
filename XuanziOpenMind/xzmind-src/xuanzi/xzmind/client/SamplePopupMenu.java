@@ -18,6 +18,7 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.Event;
 
 import sbaike.client.h5.client.Action;
+import sbaike.client.h5.client.JQuery;
 import xuanzi.h5.fs.client.PopupMenu;
 
 /**
@@ -69,6 +70,7 @@ public class SamplePopupMenu extends PopupMenu{
 						"> 说明：用TAB键划分节点层次\r\n\r\n" );
 			}
 		});
+	 
 		/*
 		addMenuItem("组织架构图", new Action() {
 			

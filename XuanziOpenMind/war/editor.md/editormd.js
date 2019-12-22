@@ -120,7 +120,7 @@
         delay                : 300,            // Delay parse markdown to html, Uint : ms
         autoLoadModules      : true,           // Automatic load dependent module files
         watch                : true,
-        placeholder          : "输入笔记 支持Markdown语法",
+        placeholder          : "支持Markdown语法的内容",
         gotoLine             : true,
         codeFold             : false,
         autoHeight           : false,
@@ -1532,6 +1532,12 @@
             this.previewContainer.find(".super-mind").each(function(){
                 var tex  = $(this);
                 tex[0].innerHTML = _settings.supermind.render(tex.text()); 
+            });   // add qrcode
+            this.previewContainer.find(".qrcode").each(function(){
+                var tex  = $(this);
+                var code = utf16to8(tex.text());
+                tex.empty();
+                tex.qrcode({text:code}); 
             });   
 
             return this;
@@ -3223,7 +3229,14 @@
         "Ctrl-6"       : "h6",
         "Ctrl-B"       : "bold",  // if this is string ==  editormd.toolbarHandlers.xxxx
         "Ctrl-D"       : "datetime",
-        
+        "Ctrl-S"		:function(){	// mind add
+        	//alert('save');
+        	//console.dir(this);
+        	this.supermind.save();
+        },
+        "Ctrl-R"		:function(){	// mind add
+        	//alert('save');
+        },
         "Ctrl-E"       : function() { // emoji
             var cm        = this.cm;
             var cursor    = cm.getCursor();
@@ -3659,6 +3672,8 @@
                 return "<p class=\"" + editormd.classNames.tex + "\">" + code + "</p>";
             } else if (lang === "mind" || lang === "supermind"){
                  return "<div class=\"super-mind\">" + code + "</div>";
+            }else if (lang === "qr" || lang === "qrcode"){
+                 return "<div class=\"qrcode\">" + code + "</div>";
             }else{
                 return marked.Renderer.prototype.code.apply(this, arguments);
             }
@@ -4038,7 +4053,6 @@
             }
         }
         {//render mind
-        	 
                  console.log('render mind ');
                 
                 div.find(".super-mind").each(function(){
@@ -4046,6 +4060,14 @@
                      tex[0].innerHTML = settings.supermind.render(tex.text()); 
                  });   
  
+        } {//render qrcode
+            console.log('render qrcode ');
+           div.find(".qrcode").each(function(){
+                var tex  = $(this);
+                tex.qrcode({text:"AAAA",width:100,height:100});
+                //tex[0].innerHTML = settings.supermind.qrcode(tex.text()); 
+            });   
+
         }
         if (settings.tex)
         {
@@ -4661,3 +4683,23 @@ $.fn.insertAtCaret = function(text) {
         }
     });
 };
+
+function utf16to8(str) {
+    var out, i, len, c;  
+    out = "";  
+    len = str.length;  
+    for(i = 0; i < len; i++) {  
+    c = str.charCodeAt(i);  
+    if ((c >= 0x0001) && (c <= 0x007F)) {  
+        out += str.charAt(i);  
+    } else if (c > 0x07FF) {  
+        out += String.fromCharCode(0xE0 | ((c >> 12) & 0x0F));  
+        out += String.fromCharCode(0x80 | ((c >>  6) & 0x3F));  
+        out += String.fromCharCode(0x80 | ((c >>  0) & 0x3F));  
+    } else {  
+        out += String.fromCharCode(0xC0 | ((c >>  6) & 0x1F));  
+        out += String.fromCharCode(0x80 | ((c >>  0) & 0x3F));  
+    }  
+    }  
+    return out;  
+}

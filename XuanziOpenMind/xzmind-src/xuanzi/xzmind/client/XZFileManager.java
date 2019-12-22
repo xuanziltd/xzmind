@@ -91,6 +91,7 @@ public class XZFileManager extends IndexedFSView implements IXZFileManager{
 			}
 		});
 		getBodyEl().style().setHeight( Window.getClientHeight()	, Unit.PX);
+		
 		super.onLoad();
 	}
 

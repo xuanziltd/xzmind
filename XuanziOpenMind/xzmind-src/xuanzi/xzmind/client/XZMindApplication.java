@@ -35,6 +35,12 @@ import xuanzi.h5.fs.impl.FileSystem;
  */
 public class XZMindApplication   implements EntryPoint{
 
+	static{
+		String theme = LocalStorage.get("fs-theme");
+		if(theme!=null)
+			RootPanel.getBodyElement().addClassName(theme);
+	}
+	
 	public XZMindApplication() { 
 		
 	}
@@ -43,9 +49,7 @@ public class XZMindApplication   implements EntryPoint{
 
 	@Override
 	public void onModuleLoad() {
-		String theme = LocalStorage.get("fs-theme");
-		if(theme!=null)
-			RootPanel.getBodyElement().addClassName(theme);
+		
 		fs = new FileSystem("WebFileService") {
 			
 			@Override

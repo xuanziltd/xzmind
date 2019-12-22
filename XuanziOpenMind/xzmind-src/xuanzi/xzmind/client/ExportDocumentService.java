@@ -1,6 +1,6 @@
 /*
    Copyright (c) 2019 Shanghai Xuanzi Technology Co. Ltd https://xuanzi.ltd
-   IndexeddbFS is licensed under the Mulan PSL v1.
+   XZMind is licensed under the Mulan PSL v1.
    You can use this software according to the terms and conditions of the Mulan PSL v1.
    You may obtain a copy of Mulan PSL v1 at:
       http://license.coscl.org.cn/MulanPSL
@@ -34,7 +34,7 @@ public class ExportDocumentService {
 		
 		@Override
 		public void execute(Element el, Event event) { 
-			ElUtils printEl = ElUtils.bind(RootPanel.getBodyElement()).createEl("iframe").attr("src",makeURL(editor.getRenderedText()+"<script>print()</script>")).addClass("fs-popup-frame");
+		//	ElUtils printEl = ElUtils.bind(RootPanel.getBodyElement()).createEl("iframe").attr("src",makeURL(editor.getRenderedText()+"<script>print()</script>")).addClass("fs-popup-frame");
 			
 		}
 	};
@@ -66,7 +66,11 @@ public class ExportDocumentService {
 	  return 'data:text/html;charset=utf-8,' + (encodeURIComponent(text)); 
 	}-*/;
 
-	
+	/**
+	 * 执行下载文件
+	 * @param text	文件内容
+	 * @param name	文件名
+	 */
 	public native void download(String text,String name)/*-{
 		 var element = $wnd.document.createElement('a');
 		  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));

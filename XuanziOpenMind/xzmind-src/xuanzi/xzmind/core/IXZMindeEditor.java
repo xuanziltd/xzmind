@@ -13,7 +13,30 @@
 
 package xuanzi.xzmind.core;
 
+import xuanzi.h5.fs.core.IFile;
+import xuanzi.h5.fs.impl.FileSystem;
+
 public interface IXZMindeEditor {
+
+	FileSystem getFs();
+
+	String getRenderedText();
+
+	void insertMdText(String text);
+
+	String getMdText();
+
+	void setRenderText(String text);
+
+	void insertText(String text);
+
+	void setMdText(String text);
+
+	IFile getCurrentFile();
+
+	String getPath();
+
+	void height(int height);
 
 	
 }
