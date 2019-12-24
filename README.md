@@ -20,7 +20,57 @@
 - 支持ToC（Table of Contents）、Emoji表情、Task lists、@链接等Markdown扩展语法；
 - 支持TeX科学公式（基于KaTeX）、流程图 Flowchart 和 时序图 Sequence Diagram;
 
+### v0.2 新特性
+- 支持通过文本设置脑图节点的字体大小；
+- 支持通过文本设置脑图节点字体颜色和背景颜色
+- 支持渲染指定文本为二维码；
 
+#### 设置节点颜色演示
+```
+	```mind
+	思维导图字体颜色演示
+		 . 说话的艺术
+			#FF00ff 1.警告的话
+			#44ff00 2. 温馨的话
+			#229933 3. 关怀的话
+			#ff3300 4. 强硬的话
+		. 背景颜色
+			##ff00ff 高兴的事情
+			##ff9900 不开心的事
+			##00ff88 悠闲的时光
+		第三项 : 样例节点
+	``` 
+```
+
+渲染效果
+
+![sample-1](https://xzmind.xuanzi.ltd/assets/samples/color.svg)
+
+#### 设置节点字体大小
+```
+	```mind
+	思维导图字体演示
+		 ## 重要事项
+			# 1.特别重要事项
+			## 2. 也很重要的事
+			### 3. 需要注意的事情
+			#### 4. 留意的事情
+		第二项 : 样例节点
+		第三项 : 样例节点
+	``` 
+```
+
+渲染效果 
+![sample-1](https://xzmind.xuanzi.ltd/assets/samples/fontsize.svg)
+
+
+#### 嵌入二维码
+
+```
+	```qrcode
+	二维码码内容,链接 https://xuanzi.ltd
+	```
+```
 
 ### 嵌入思维导图1
 
@@ -34,7 +84,7 @@
         	第二项 : 样例节点
         	第三项 : 样例节点
      ```
-```
+```	 
 
 > 说明：用TAB键划分节点层次
 
@@ -67,7 +117,7 @@
         		汉服文化
         		唐诗宋词
      ```
-```
+``` 
 
 ** 渲染的显示效果 **
 
@@ -102,7 +152,7 @@
 
 - 编辑器
 
-![sample-2](https://xzmind.xuanzi.ltd/assets/images/editor.PNG)
+![sample-2](https://images.gitee.com/uploads/images/2019/1224/165136_8d694001_1857596.png)
 
 ### 联系方式
 - [开源项目首页](https://gitee.com/xuanzi_code/xzmind "开源项目首页")
@@ -120,7 +170,6 @@
 
 ### 项目未来路线图
 - 支持更多思维导图结构布局
-- 支持设置节点颜色
 - 支持导入和导出文档
 - 支持多设备客户端，如PC、安卓、iphone、微信小程序等
 - 支持文件同步
