@@ -36,6 +36,7 @@ import sbaike.client.h5.client.Action;
 import sbaike.client.h5.client.ElUtils;
 import sbaike.client.h5.client.JQuery;
 import sbaike.client.h5.client.LocalStorage;
+import xuanzi.commons.graphics.Color;
 import xuanzi.commons.graphics.Paint;
 import xuanzi.commons.graphics.SVGCanvas;
 import xuanzi.h5.fs.client.PopupMenu;
@@ -258,9 +259,10 @@ public class XZMindEditor extends Module implements IXZMindeEditor{
 		
 		String list[]=text2.split("\n");
 		String first = list[0];
+		Scene scene = new EastScene();
 		if(first.startsWith(":")) {
 			String key = first.substring(1); 
-			Scene scene = new EastScene();
+		
 			if("逻辑图-向左".equals(key))
 				scene = new WestScene();
 			else if("思维树图".equals(key))
@@ -269,22 +271,24 @@ public class XZMindEditor extends Module implements IXZMindeEditor{
 				scene = new SouthScene();
 			else if("组织架构图-向上".equals(key))
 				scene = new NorthScene();
-			root.setScene(scene);
+		
 			first = list[1];
 			pos = 2;
-		}
+		} 
+		root.setScene(scene);
 		first= first.replace("\\n", "\n");
 		if(first.startsWith("-")) {
 			//root.setOpen(false);
 			first.substring(1);
 		}
-			
+	//	root.applyStyle().textColor = 0xFF44ff33;	
 		root.setTopic(first);
 		if(first.contains(":")) {
 			int p = first.indexOf(":");
 			root.setLabel(first.substring(0,p));
 			root.setTopic(first.substring(p+1));
 		}
+		
 		listX(root, list , -1 );
 		return root;
 	}
@@ -323,12 +327,46 @@ public class XZMindEditor extends Module implements IXZMindeEditor{
 					open = false;
 					topic = topic.substring(3);
 				}
-				Node child = new  Node(topic);  
+				Node child = new  Node(topic);
+				int blank = topic.indexOf(" ");
+				if(topic.startsWith(". ")) {
+					topic = "● "+ topic.substring(2);
+				}
+				if(topic.startsWith("#")&&blank==7) {	//字体颜色
+					String color = "#ff"+topic.substring(1,7);
+					int c = Color.hex2int(color);
+					child.applyStyle().textColor = c;
+					child.applyStyle().borderColor = c;
+					
+					//Window.alert(color);
+					topic = topic.substring(8);
+				}else if(topic.startsWith("##")&&blank==8) {	//背景颜色
+					String color = "#ff"+topic.substring(2,8);
+					int c = Color.hex2int(color);
+					child.applyStyle().backgroundColor = c;
+					child.applyStyle().borderColor = c;
+					child.applyStyle().textColor = 0xFFFFFFFF - c+0xFF000000;
+					topic = topic.substring(8);
+				}else
+				if(topic.startsWith("#### ")) {
+					child.applyStyle().textSize = 16;
+					topic = topic.substring(4);
+				}else if(topic.startsWith("### ")) {
+					child.applyStyle().textSize = 19;
+					topic = topic.substring(3);
+				}else if(topic.startsWith("## ")) {
+					child.applyStyle().textSize = 22;
+					topic = topic.substring(2);
+				}else if(topic.startsWith("# ")) {
+					child.applyStyle().textSize = 26;
+					topic = topic.substring(1);
+				}
 				if(topic.contains(":")) {
 					int p = topic.indexOf(":");
 					child.setLabel(topic.substring(0,p));
 					child.setTopic(topic.substring(p+1));
 				}
+				child.setTopic(topic);
 				if(l>plevel) {  
 					lastNode.addNode(child); 
 					node = (Node) lastNode;

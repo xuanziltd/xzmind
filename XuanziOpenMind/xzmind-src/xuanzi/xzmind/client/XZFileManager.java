@@ -48,7 +48,7 @@ public class XZFileManager extends IndexedFSView implements IXZFileManager{
 	private Action filePopupAction;
 
 	/**
-	 * 渲染文件列表
+	 * 渲染文件列表，增加地址栏的路径表示
 	 */
 	@Override
 	protected void onRenderList(List<BFile> items, ElUtils listEl2) {
@@ -131,12 +131,15 @@ public class XZFileManager extends IndexedFSView implements IXZFileManager{
 			}
 		};
 		toolbar.createEl("img").attr("src", "logo.png").addClass("fs-logo");
-		toolbar.createSpan("玄子思维导图 v0.1").addClass("fa  fs-apps");
+		toolbar.createSpan("玄子思维导图 v0.2").addClass("fa  fs-apps");
 		toolbar.createButton("").click(applyLightAction).addClass("fa fa-circle fs-fr").attr("style", "color:#eee;background:none;margin:0px");
 		toolbar.createButton("").click(applyNightAction).addClass("fa fa-circle fs-fr").attr("style", "color:#555;background:none;margin:0px");
 		super.onInitToolbar(toolbar);
 	}
 	
+	/**
+	 * 重写建立文件的方法
+	 */
 	@Override
 	protected void onCreateFile() {
 		String name = Window.prompt("输入文件名称", "新建脑图文档");
@@ -167,6 +170,11 @@ public class XZFileManager extends IndexedFSView implements IXZFileManager{
 		super.onFilePopupMenu(pm, item, event);
 	}
 
+	/**
+	 * 打开当前目录的某个文件
+	 * 
+	 * @param name
+	 */
 	public void open(String name) {
 		String url = Window.Location.getHref();
 		int p = url.indexOf("#");
@@ -178,7 +186,9 @@ public class XZFileManager extends IndexedFSView implements IXZFileManager{
 		Window.open(url, "_blank", null);
 	}
 	
-	
+	/**
+	 * 初始化第一次打开时候的数据
+	 */
 	@Override
 	protected void onInitData(final Result result) {
 		if(defaultFolder.equals("/项目库")) {  

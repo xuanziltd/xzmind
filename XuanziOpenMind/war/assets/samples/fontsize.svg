@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" height="281.8000015258789" width="662.708984375" viewBox="0 0 662.708984375 281.8000015258789">
+<g transform="translate(86,140.90000076293944)">
+<path stroke-width="1" fill="none" stroke="rgba(102,102,102,0.8)" d="M84 0 L84 -48 Q84 -53 89 -53 L115 -53 "></path>
+<path stroke-width="1" fill="none" stroke="rgba(102,102,102,0.8)" d="M84 0 L84 38 Q84 43 89 43 L115 43 "></path>
+<path stroke-width="1" fill="none" stroke="rgba(102,102,102,0.8)" d="M84 0 L84 89 Q84 94 89 94 L115 94 "></path>
+<rect rx="5" ry="5" x="-76" y="-14" height="28" width="152" stroke-width="1" fill="rgba(255,255,255,1)" stroke="none"></rect>
+<rect rx="5" ry="5" x="-76" y="-14" height="28" width="152" stroke-width="1" fill="none" stroke="rgba(68,68,68,0.8)"></rect>
+<text font-size="15" x="-59" y="7" stroke-width="2" fill="rgba(68,68,68,1)" stroke="none">思维导图字体演示</text>
+<ellipse cx="80" cy="0" rx="3" ry="3" stroke-width="2" fill="rgba(255,255,255,1)" stroke="none"></ellipse>
+<ellipse cx="80" cy="0" rx="3" ry="3" stroke-width="1" fill="none" stroke="rgba(68,68,68,1)"></ellipse>
+<path stroke-width="1" fill="none" stroke="rgba(102,102,102,0.8)" d="M249 -53 L249 -105 Q249 -110 254 -110 L280 -110 "></path>
+<path stroke-width="1" fill="none" stroke="rgba(102,102,102,0.8)" d="M249 -53 L249 -61 Q249 -66 254 -66 L280 -66 "></path>
+<path stroke-width="1" fill="none" stroke="rgba(102,102,102,0.8)" d="M249 -53 L249 -33 Q249 -28 254 -28 L280 -28 "></path>
+<path stroke-width="1" fill="none" stroke="rgba(102,102,102,0.8)" d="M249 -53 L249 0 Q249 5 254 5 L280 5 "></path>
+<rect rx="5" ry="5" x="115" y="-70" height="35" width="126" stroke-width="1" fill="rgba(255,255,255,1)" stroke="none"></rect>
+<rect rx="5" ry="5" x="115" y="-70" height="35" width="126" stroke-width="1" fill="none" stroke="rgba(68,68,68,0.8)"></rect>
+<text font-size="22" x="129" y="-42" stroke-width="2" fill="rgba(68,68,68,1)" stroke="none"> 重要事项</text>
+<ellipse cx="245" cy="-53" rx="3" ry="3" stroke-width="2" fill="rgba(255,255,255,1)" stroke="none"></ellipse>
+<ellipse cx="245" cy="-53" rx="3" ry="3" stroke-width="1" fill="none" stroke="rgba(68,68,68,1)"></ellipse>
+<rect rx="5" ry="5" x="280" y="-130" height="41" width="217" stroke-width="1" fill="rgba(255,255,255,1)" stroke="none"></rect>
+<rect rx="5" ry="5" x="280" y="-130" height="41" width="217" stroke-width="1" fill="none" stroke="rgba(68,68,68,0.8)"></rect>
+<text font-size="26" x="299" y="-97" stroke-width="2" fill="rgba(68,68,68,1)" stroke="none"> 1.特别重要事项</text>
+<rect rx="5" ry="5" x="280" y="-84" height="35" width="195" stroke-width="1" fill="rgba(255,255,255,1)" stroke="none"></rect>
+<rect rx="5" ry="5" x="280" y="-84" height="35" width="195" stroke-width="1" fill="none" stroke="rgba(68,68,68,0.8)"></rect>
+<text font-size="22" x="298" y="-55" stroke-width="2" fill="rgba(68,68,68,1)" stroke="none"> 2. 也很重要的事</text>
+<rect rx="5" ry="5" x="280" y="-44" height="30" width="191" stroke-width="1" fill="rgba(255,255,255,1)" stroke="none"></rect>
+<rect rx="5" ry="5" x="280" y="-44" height="30" width="191" stroke-width="1" fill="none" stroke="rgba(68,68,68,0.8)"></rect>
+<text font-size="19" x="298" y="-19" stroke-width="2" fill="rgba(68,68,68,1)" stroke="none"> 3. 需要注意的事情</text>
+<rect rx="5" ry="5" x="280" y="-8" height="28" width="134" stroke-width="1" fill="rgba(255,255,255,1)" stroke="none"></rect>
+<rect rx="5" ry="5" x="280" y="-8" height="28" width="134" stroke-width="1" fill="none" stroke="rgba(68,68,68,0.8)"></rect>
+<text font-size="16" x="295" y="13" stroke-width="2" fill="rgba(68,68,68,1)" stroke="none"> 4. 留意的事情</text>
+<rect rx="5" ry="5" x="115" y="29" height="29" width="149" stroke-width="1" fill="rgba(255,255,255,1)" stroke="none"></rect>
+<rect rx="5" ry="5" x="115" y="29" height="29" width="149" stroke-width="1" fill="none" stroke="rgba(68,68,68,0.8)"></rect>
+<text font-size="15" x="130" y="50" stroke-width="2" fill="rgba(68,68,68,1)" stroke="none">第二项 : 样例节点</text>
+<rect x="131" y="58" height="16" width="117" stroke-width="1" fill="rgba(255,193,7,1)" stroke="none"></rect>
+<rect x="131" y="58" height="16" width="117" stroke-width="1" fill="none" stroke="rgba(68,68,68,0.8)"></rect>
+<text font-size="10" x="174" y="70" stroke-width="1" fill="rgba(68,68,68,1)" stroke="none">第二项 </text>
+<rect rx="5" ry="5" x="115" y="80" height="29" width="149" stroke-width="1" fill="rgba(255,255,255,1)" stroke="none"></rect>
+<rect rx="5" ry="5" x="115" y="80" height="29" width="149" stroke-width="1" fill="none" stroke="rgba(68,68,68,0.8)"></rect>
+<text font-size="15" x="130" y="101" stroke-width="2" fill="rgba(68,68,68,1)" stroke="none">第三项 : 样例节点</text>
+<rect x="131" y="109" height="16" width="117" stroke-width="1" fill="rgba(255,193,7,1)" stroke="none"></rect>
+<rect x="131" y="109" height="16" width="117" stroke-width="1" fill="none" stroke="rgba(68,68,68,0.8)"></rect>
+<text font-size="10" x="174" y="121" stroke-width="1" fill="rgba(68,68,68,1)" stroke="none">第三项 </text></g>
+</svg>

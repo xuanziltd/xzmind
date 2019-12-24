@@ -20,19 +20,10 @@
 - 支持ToC（Table of Contents）、Emoji表情、Task lists、@链接等Markdown扩展语法；
 - 支持TeX科学公式（基于KaTeX）、流程图 Flowchart 和 时序图 Sequence Diagram;
 
-
-### 联系方式
-[开源项目首页](https://gitee.com/xuanzi_code/xzmind "开源项目首页")
-[应用访问地址](http://xzmind.xuanzi.ltd "应用访问地址")
-[开发者主页](https://xuanzi.ltd "开发者主页")
-开发者交流Q群: 345694159
-电子邮箱 : app@sbaike.com
-
-### 主要使用到的开源项目
-- [XZMindMap](https://gitee.com/xuanzi_code/XZMindMap "XZMindMap")
-- [IndexedFSView](https://gitee.com/xuanzi_code/IndexedFSView "IndexedFSView")
-- [Editor.md](https://pandao.github.io/editor.md/ "Editor.md")
-
+### v0.2 新特性
+- 支持通过文本设置脑图节点的字体大小；
+- 支持通过文本设置脑图节点字体颜色和背景颜色
+- 支持渲染指定文本为二维码；
 
 ### 嵌入思维导图1
  
@@ -71,6 +62,42 @@
 		唐诗宋词
 ```
 
+#### 设置节点颜色演示
+
+```mind
+思维导图字体颜色演示
+	 . 说话的艺术
+		#FF00ff 1.警告的话
+		#44ff00 2. 温馨的话
+		#229933 3. 关怀的话
+		#ff3300 4. 强硬的话
+	. 背景颜色
+		##ff00ff 高兴的事情
+		##ff9900 不开心的事
+		##00ff88 悠闲的时光
+	第三项 : 样例节点
+``` 
+
+#### 设置节点字体大小演示
+
+```mind
+思维导图字体演示
+	 . 重要事项
+		# 1.特别重要事项
+		## 2. 也很重要的事
+		### 3. 需要注意的事情
+		#### 4. 留意的事情
+	第二项 : 样例节点
+	第三项 : 样例节点
+``` 
+
+
+### 插入二维码
+```qrcode
+二维码码内容,链接 https://xuanzi.ltd
+```
+
+
 ### 常用技巧
 - 支持MD语法输入，例如以下示例创建一幅简单的思维导图：
  ```
@@ -85,3 +112,17 @@
     ````
 ````
 - 思维导图每一个节点已换行分隔，节点级别已TAB键符为层次划分，下级比上级多一个TAB键符。
+
+
+### 联系方式
+[开源项目首页](https://gitee.com/xuanzi_code/xzmind "开源项目首页")
+[应用访问地址](http://xzmind.xuanzi.ltd "应用访问地址")
+[开发者主页](https://xuanzi.ltd "开发者主页")
+开发者交流Q群: 345694159
+电子邮箱 : app@sbaike.com
+
+### 主要使用到的开源项目
+- [XZMindMap](https://gitee.com/xuanzi_code/XZMindMap "XZMindMap")
+- [IndexedFSView](https://gitee.com/xuanzi_code/IndexedFSView "IndexedFSView")
+- [Editor.md](https://pandao.github.io/editor.md/ "Editor.md")
+
