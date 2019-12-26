@@ -10,7 +10,6 @@ editor.md\css\editormd.preview.css
 editor.md\css\editormd.preview.min.css
 editor.md\editormd.js
 editor.md\fonts\editormd-logo.svg
-editor.md\fonts\editormd-logo.ttf
 editor.md\jquery.min.js
 editor.md\jquery.qrcode.min.js
 editor.md\lib\codemirror\addons.min.js
@@ -19,6 +18,39 @@ editor.md\lib\codemirror\codemirror.min.js
 editor.md\lib\codemirror\lib\codemirror.css
 editor.md\lib\codemirror\lib\codemirror.js
 editor.md\lib\codemirror\modes.min.js
+editor.md\lib\codemirror\theme\3024-day.css
+editor.md\lib\codemirror\theme\3024-night.css
+editor.md\lib\codemirror\theme\ambiance-mobile.css
+editor.md\lib\codemirror\theme\ambiance.css
+editor.md\lib\codemirror\theme\base16-dark.css
+editor.md\lib\codemirror\theme\base16-light.css
+editor.md\lib\codemirror\theme\blackboard.css
+editor.md\lib\codemirror\theme\cobalt.css
+editor.md\lib\codemirror\theme\colorforth.css
+editor.md\lib\codemirror\theme\eclipse.css
+editor.md\lib\codemirror\theme\elegant.css
+editor.md\lib\codemirror\theme\erlang-dark.css
+editor.md\lib\codemirror\theme\lesser-dark.css
+editor.md\lib\codemirror\theme\mbo.css
+editor.md\lib\codemirror\theme\mdn-like.css
+editor.md\lib\codemirror\theme\midnight.css
+editor.md\lib\codemirror\theme\monokai.css
+editor.md\lib\codemirror\theme\neat.css
+editor.md\lib\codemirror\theme\neo.css
+editor.md\lib\codemirror\theme\night.css
+editor.md\lib\codemirror\theme\paraiso-dark.css
+editor.md\lib\codemirror\theme\paraiso-light.css
+editor.md\lib\codemirror\theme\pastel-on-dark.css
+editor.md\lib\codemirror\theme\rubyblue.css
+editor.md\lib\codemirror\theme\solarized.css
+editor.md\lib\codemirror\theme\the-matrix.css
+editor.md\lib\codemirror\theme\tomorrow-night-bright.css
+editor.md\lib\codemirror\theme\tomorrow-night-eighties.css
+editor.md\lib\codemirror\theme\twilight.css
+editor.md\lib\codemirror\theme\vibrant-ink.css
+editor.md\lib\codemirror\theme\xq-dark.css
+editor.md\lib\codemirror\theme\xq-light.css
+editor.md\lib\codemirror\theme\zenburn.css
 editor.md\lib\flowchart.min.js
 editor.md\lib\jquery.flowchart.min.js
 editor.md\lib\jquery.min.js
@@ -40,10 +72,11 @@ xzmind_v03\975210BBD1C3EDA66B9632EDDF981801.cache.js
 xzmind_v03\DCC734DB7CE72AE62F0B464C8717B2D8.cache.js
 xzmind_v03\xzmind_v03.devmode.js
 xzmind_v03\xzmind_v03.nocache.js
+icons/fonts/fontawesome-webfont.ttf?v=4.7.0
   
 NETWORK:  
 *
 
-# build at 2019-12-26 10:34:24
+# build at 2019-12-26 10:40:36
 
-# cache size : 2808055
+# cache size : 2893716

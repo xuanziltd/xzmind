@@ -45,7 +45,7 @@ public class Build {
 			
 			@Override
 			public boolean accept(File arg0) { 
-				if(arg0.getName().equals("WEB-INF")||arg0.getName().equals("theme")||arg0.getName().equals("plugins")||arg0.getName().equals("addon"))
+				if(arg0.getName().equals("WEB-INF")||arg0.getName().equals("themex")||arg0.getName().equals("plugins")||arg0.getName().equals("addon"))
 					return false;
 				return true;
 			}
@@ -53,13 +53,13 @@ public class Build {
 		long size = 0;
 		for(File f:list) {
 			if(f.isFile()&&(f.getName().endsWith(".html")||f.getName().endsWith(".svg")||f.getName().endsWith(".css")
-					||f.getName().endsWith(".js")||f.getName().endsWith(".ttf"))) {
+					||f.getName().endsWith(".js")||f.getName().contains("webfont.ttf"))) {
 				size += f.length();
 				cache.append(f.getAbsolutePath().substring(startPos)).append("\n");
 				System.out.println(f.getAbsolutePath().substring(startPos));
 			}
 		}
-		cache.append("  \n" + 
+		cache.append("icons/fonts/fontawesome-webfont.ttf?v=4.7.0\n  \n" + 
 				"NETWORK:  \n" + 
 				"*\n" + 
 				"\n" + 
