@@ -333,20 +333,22 @@ public class XZMindEditor extends Module implements IXZMindeEditor{
 					topic = "● "+ topic.substring(2);
 				}
 				if(topic.startsWith("#")&&blank==7) {	//字体颜色
-					String color = "#ff"+topic.substring(1,7);
-					int c = Color.hex2int(color);
-					child.applyStyle().textColor = c;
-					child.applyStyle().borderColor = c;
-					
-					//Window.alert(color);
-					topic = topic.substring(8);
+					try {
+						String color = "#ff"+topic.substring(1,7);
+						int c = Color.hex2int(color);
+						child.applyStyle().textColor = c;
+						child.applyStyle().borderColor = c;
+						topic = topic.substring(8);
+					}catch(Exception ex) {}
 				}else if(topic.startsWith("##")&&blank==8) {	//背景颜色
-					String color = "#ff"+topic.substring(2,8);
-					int c = Color.hex2int(color);
-					child.applyStyle().backgroundColor = c;
-					child.applyStyle().borderColor = c;
-					child.applyStyle().textColor = 0xFFFFFFFF - c+0xFF000000;
-					topic = topic.substring(8);
+					try {
+						String color = "#ff"+topic.substring(2,8);
+						int c = Color.hex2int(color);
+						child.applyStyle().backgroundColor = c;
+						child.applyStyle().borderColor = c;
+						child.applyStyle().textColor = 0xFFFFFFFF - c+0xFF000000;
+						topic = topic.substring(8);
+					}catch(Exception ex) {}
 				}else
 				if(topic.startsWith("#### ")) {
 					child.applyStyle().textSize = 16;
