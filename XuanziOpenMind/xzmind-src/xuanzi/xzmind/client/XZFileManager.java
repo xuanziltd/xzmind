@@ -130,8 +130,16 @@ public class XZFileManager extends IndexedFSView implements IXZFileManager{
 				RootPanel.getBodyElement().addClassName("fs-theme-night");
 			}
 		};
+		Action questionAction = new Action() {
+			
+			@Override
+			public void execute(Element el, Event event) { 
+				Window.open("help.html", "_blank", null);
+			}
+		};
 		toolbar.createEl("img").attr("src", "logo.png").addClass("fs-logo");
 		toolbar.createSpan("玄子思维导图 v0.2").addClass("fa  fs-apps");
+		toolbar.createButton("").attr("title", "帮助文档").click(questionAction  ).addClass("fs-fr fa fa-question");
 		toolbar.createButton("").click(applyLightAction).addClass("fa fa-circle fs-fr").attr("style", "color:#eee;background:none;margin:0px");
 		toolbar.createButton("").click(applyNightAction).addClass("fa fa-circle fs-fr").attr("style", "color:#555;background:none;margin:0px");
 		super.onInitToolbar(toolbar);
@@ -188,8 +196,7 @@ public class XZFileManager extends IndexedFSView implements IXZFileManager{
 	
 	/**
 	 * 初始化第一次打开时候的数据
-	 */
-	@Override
+	 */ 
 	protected void onInitData(final Result result) {
 		if(defaultFolder.equals("/项目库")) {  
 			getFs().goFolder(defaultFolder, new Result() {
@@ -209,8 +216,6 @@ public class XZFileManager extends IndexedFSView implements IXZFileManager{
 					}
 				}
 			}); 
-		}else {
-			super.onInitData(result);
-		}
+		} 
 	}
 }

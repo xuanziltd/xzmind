@@ -130,6 +130,14 @@ public class XZMindEditor extends Module implements IXZMindeEditor{
 	MindCreaterService createrService = new MindCreaterService(this);
 	
 	ElUtils toolbarEl;
+
+	private Action questionAction = new Action() {
+		
+		@Override
+		public void execute(Element el, Event event) { 
+			Window.open("help.html", "_blank", null);
+		}
+	};
 	
 	public ElUtils getToolbarEl() {
 		return toolbarEl;
@@ -149,6 +157,7 @@ public class XZMindEditor extends Module implements IXZMindeEditor{
 		toolbarEl.createButton(" 保  存").attr("title", "Ctrl + S 保存文件").click(saveAction).addClass("fs-fr fa fa-save");
 		toolbarEl.createButton("").attr("title", "下载文件").click(exportService.downloadAction ).addClass("fs-fr fa fa-download");
 		toolbarEl.createButton("").attr("title", "打印文档").click(printService.printAction ).addClass("fs-fr fa fa-print");
+		toolbarEl.createButton("").attr("title", "帮助文档").click(questionAction  ).addClass("fs-fr fa fa-question");
 		Window.setTitle(file.getName()+"-玄子思维导图");
 		ce = DOM.createElement("canvas").cast();
 		fs.readFile(file, new FileReader() {
@@ -486,10 +495,13 @@ public class XZMindEditor extends Module implements IXZMindeEditor{
 	 */
 	@Override
 	public String getRenderedText() {
-		StringBuffer sb = new StringBuffer("<html><head><link rel=\"stylesheet\" href=\"https://xzmind.xuanzi.ltd/editor.md/css/editormd.preview.min.css\"><link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.3.0/katex.min.css\"></head>\n<body>");
+		StringBuffer sb = new StringBuffer("<html><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n" + 
+				"    \r\n" + 
+				"    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">\r\n" + 
+				"    <meta name=\"description\" content=\"使用玄子思维导图导出的《"+currentFile.getName()+"》文档\"><head><title>"+currentFile.getName()+"-玄子思维导图</title><link rel=\"stylesheet\" href=\"https://xzmind.xuanzi.ltd/editor.md/css/editormd.preview.min.css\"><link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.3.0/katex.min.css\"></head>\n<body>");
 		sb.append("<div class=\"editormd-preview-container\"><div class=\"markdown-body\">\n");
 		sb.append(JQuery.$(".editormd-preview-container").html());
-		sb.append("\n</div></body>\n</html>");
+		sb.append("\n</div><style>.editormd-html-preview, .editormd-preview-container{padding:0px}</style><hr/> <p>本文档使用 <a style=\"color:#666\" href=\"https://xzmind.xuanzi.ltd\">玄子思维导图</a> 导出</p></body>\n</html>");
 		return sb.toString();
 	}
 

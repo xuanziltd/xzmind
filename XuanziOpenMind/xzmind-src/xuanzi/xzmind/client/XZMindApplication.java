@@ -58,6 +58,8 @@ public class XZMindApplication   implements EntryPoint{
 				parseParams();
 			}
 		};  
+		
+		
 	}
 
 	String folder;

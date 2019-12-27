@@ -20,7 +20,6 @@ public class Build {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		File file = new File("war");
 		int startPos = file.getAbsolutePath().indexOf("war")+4;
 		System.out.println(file.getAbsolutePath());

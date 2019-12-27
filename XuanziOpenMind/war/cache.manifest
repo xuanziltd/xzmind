@@ -59,24 +59,25 @@ editor.md\lib\prettify.min.js
 editor.md\lib\raphael.min.js
 editor.md\lib\sequence-diagram.min.js
 editor.md\lib\underscore.min.js
+help.html
 icons\css\font-awesome.min.css
 icons\fonts\fontawesome-webfont.svg
 icons\fonts\fontawesome-webfont.ttf
 index.html
 pwa.html
 style.css
-xzmind_v03\41DCD7191A2FCEC9CD9ECB13D52C4031.cache.js
-xzmind_v03\73673036E683F1D1EB3AD3247268D5AF.cache.js
-xzmind_v03\7F429EA2FA01EB8D545954E238973703.cache.js
-xzmind_v03\975210BBD1C3EDA66B9632EDDF981801.cache.js
-xzmind_v03\DCC734DB7CE72AE62F0B464C8717B2D8.cache.js
-xzmind_v03\xzmind_v03.devmode.js
-xzmind_v03\xzmind_v03.nocache.js
+xzmind_v04\0FE591ABF14800814C388A8B27299E09.cache.js
+xzmind_v04\1ADF83BEAE53EC1537E3ED563AA7804C.cache.js
+xzmind_v04\28AB31BEDCA86D471028C695A07E84E6.cache.js
+xzmind_v04\5E878354B50FC87030AD832093AAF995.cache.js
+xzmind_v04\66A631E0FC39E5A74252A8C0DBFD5461.cache.js
+xzmind_v04\xzmind_v04.devmode.js
+xzmind_v04\xzmind_v04.nocache.js
 icons/fonts/fontawesome-webfont.ttf?v=4.7.0
   
 NETWORK:  
 *
 
-# build at 2019-12-26 10:40:36
+# build at 2019-12-27 12:44:14
 
-# cache size : 2893716
+# cache size : 2925100
